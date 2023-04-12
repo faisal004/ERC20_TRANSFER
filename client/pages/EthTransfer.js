@@ -1,6 +1,6 @@
 import React,{useContext} from "react";
 import { TranferContext } from "@/context/TransferContext";
-
+import TransactionDetails from "./TransactionDetails";
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
@@ -22,8 +22,8 @@ const EthTransfer= () => {
   }
   
   return (
-    <div className="w-full h-screen flex flex-col space-y-3 items-center justify-center bg-gradient-to-r from-black to-blue-900">
-    <div className="flex  font-mono text-white text-3xl">Send Ethers to your friends</div>
+    <div className="w-full h-full  pt-7 flex flex-col space-y-36 items-center justify-center bg-gradient-to-r from-black to-blue-900">
+    <div className="flex font-mono text-white text-4xl">Send Ethers to your friends</div>
       <div className="flex flex-col w-1/2 ">
         <Input
           placeholder="Address To"
@@ -33,7 +33,7 @@ const EthTransfer= () => {
         />
         <Input
           placeholder="Amount (ETH)"
-          name="amount"
+          name="amount" 
           type="number"
           handleChange={handleChange}
         />
@@ -46,6 +46,7 @@ const EthTransfer= () => {
           SEND
         </button>
       </div>
+      <TransactionDetails/>
     </div>
   );
 };

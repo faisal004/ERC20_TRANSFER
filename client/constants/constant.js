@@ -1,5 +1,5 @@
 export const EthTransferAddress="0x593dE4785Bd25AF4362224fFc1b8Af51272cc9C0";
-export const ERC20TransferAddress=" 0x675923e9Fe439Eb9cf4308F6eFc03BC54519217D";
+export const ERC20TransferAddress="0x675923e9Fe439Eb9cf4308F6eFc03BC54519217D";
 export const ABI= [
     {
       "anonymous": false,

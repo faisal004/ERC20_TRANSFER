@@ -24,7 +24,7 @@ const Navbar = () => {
         <ul className="text-white md:flex font-mono list-none flex-row justify-between items-center flex-initial space-x-3">
         <Link href={"/EthTransfer"}>TransferEth</Link>
         <Link href={"/TransferERC20"}>TransferERC20</Link>
-      <Link href={"/TransactionDetails"}>Transaction</Link>
+      <Link href={"/TokenDetails"}>TokenDetails</Link>
     </ul>
         {!walletConnected ? (
           <button
