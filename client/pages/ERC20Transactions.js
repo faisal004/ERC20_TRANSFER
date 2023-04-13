@@ -32,7 +32,7 @@ const TransactionsCard = ({ addressTo, addressFrom, timestamp, amount }) => {
               To: {shortenAddress(addressTo)}
             </p>
           </a>
-          <p className="text-white font-mono text-base">Amount: {amount} ETH</p>
+          <p className="text-white font-mono text-base">Amount: {amount} MKT</p>
         </div>
 
         <div className="bg-white p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
@@ -43,7 +43,7 @@ const TransactionsCard = ({ addressTo, addressFrom, timestamp, amount }) => {
   );
 };
 
-const TransactionDetails = () => {
+const ERC20TransactionDetails = () => {
   const { walletConnected, currentAccount, transactions} =
     useContext(TranferContext);
   return (
@@ -68,4 +68,4 @@ const TransactionDetails = () => {
   );
 };
 
-export default TransactionDetails;
+export default ERC20TransactionDetails;
