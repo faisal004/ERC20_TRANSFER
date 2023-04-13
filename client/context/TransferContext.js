@@ -110,7 +110,8 @@ export const TransferProvider = ({ children }) => {
             transaction.timestamp.toNumber() * 1000
           ).toLocaleString(),
 
-          amount: parseInt(transaction.amount._hex) ,
+          amount: parseInt(transaction.amount._hex)
+          ,
         })
       );
       console.log(structuredTransactions);
