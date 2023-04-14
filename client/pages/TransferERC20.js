@@ -24,7 +24,7 @@ const EthTransfer= () => {
   }
   
   return (
-    <div className="w-full h-full pt-7 flex flex-col space-y-36 items-center justify-center bg-gradient-to-r from-black to-blue-900">
+    <div className="w-full h-screen pt-7 flex flex-col space-y-36 items-center justify-center bg-gradient-to-r from-black to-blue-900">
     <div className="flex  font-mono text-white text-4xl">Send MKT Tokens to your friends</div>
       <div className="flex flex-col w-1/2 ">
         <Input
@@ -48,7 +48,7 @@ const EthTransfer= () => {
           SEND
         </button>
       </div>
-      <ERC20TransactionDetails/>
+      
     </div>
   );
 };

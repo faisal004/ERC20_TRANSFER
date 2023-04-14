@@ -98,7 +98,7 @@ export const TransferProvider = ({ children }) => {
   const getAllERC20Transactions = async () => {
     try {
       const signer = await getProviderOrSigner(true);
-      const transactioContract = new Contract(ERC20TransferAddress, ABI, signer);
+      const transactioContract = new Contract(ERC20TransferAddress, ERC20_ABI, signer);
 
       const availableTransactions =
         await transactioContract.getAllTransaction();

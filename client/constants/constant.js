@@ -1,5 +1,5 @@
 export const EthTransferAddress="0x593dE4785Bd25AF4362224fFc1b8Af51272cc9C0";
-export const ERC20TransferAddress="0x129585ab5d1a1d22ffe66e56ee801079433c4e1b";
+export const ERC20TransferAddress="0x4c8671ef62161626743435161238485bf8dc2434";
 export const ABI= [
     {
       "anonymous": false,
@@ -124,12 +124,88 @@ export const ABI= [
       "inputs": [
         {
           "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "buyTokens",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "sellTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
           "name": "_initialSupply",
           "type": "uint256"
         }
       ],
       "stateMutability": "nonpayable",
       "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "TokensPurchased",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "TokensSold",
+      "type": "event"
     },
     {
       "anonymous": false,
@@ -211,6 +287,19 @@ export const ABI= [
           "internalType": "struct ERC20Transfer.TransferStruct[]",
           "name": "",
           "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getOwnerBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
