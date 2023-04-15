@@ -54,7 +54,7 @@ export const TransferProvider = ({ children }) => {
       const transactioContract = new Contract(EthTransferAddress, ABI, signer);
 
       const parsedAmount = ethers.utils.parseEther(amount);
-      await signer.sendTransaction({ to: addressTo, value: parsedAmount });
+      //await signer.sendTransaction({ to: addressTo, value: parsedAmount });
 
       const transactionHash = await transactioContract.addToBlockchain(
         addressTo,
@@ -172,6 +172,11 @@ export const TransferProvider = ({ children }) => {
     }
   };
 
+  const buyToken = async () => {
+    alert("you clicked me")
+
+  }
+
   const getProviderOrSigner = async (needSigner = false) => {
     const provider = await web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
@@ -217,6 +222,7 @@ export const TransferProvider = ({ children }) => {
         sendEth,
         currentBalance,
         transactions,
+        buyToken,
 
         tokenDetails,
         tranferERC20Token,

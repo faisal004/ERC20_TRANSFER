@@ -25,7 +25,7 @@ const Navbar = () => {
         <Link href={"/EthTransfer"}>TransferEth</Link>
         <Link href={"/TransferERC20"}>TransferERC20</Link>
         <Link href={"/BUYandSell"}>BUY/SELL</Link>
-      <Link href={"/ERC20Transactions"}>Transactions</Link>
+      <Link href={"/TokenDetails"}>Details</Link>
       
     </ul>
         {!walletConnected ? (

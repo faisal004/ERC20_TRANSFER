@@ -1,5 +1,5 @@
 export const EthTransferAddress="0x593dE4785Bd25AF4362224fFc1b8Af51272cc9C0";
-export const ERC20TransferAddress="0x4c8671ef62161626743435161238485bf8dc2434";
+export const ERC20TransferAddress="0xceccd898e154e99bb4aee06cacd5823adff2fed2";
 export const ABI= [
     {
       "anonymous": false,
@@ -239,6 +239,13 @@ export const ABI= [
       "type": "event"
     },
     {
+      "inputs": [],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "address",
@@ -252,6 +259,41 @@ export const ABI= [
           "internalType": "uint256",
           "name": "",
           "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllBUYSELLDeatils",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "receiver",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ERC20Transfer.BUYSELLSTRUCT[]",
+          "name": "",
+          "type": "tuple[]"
         }
       ],
       "stateMutability": "view",
@@ -294,7 +336,7 @@ export const ABI= [
     },
     {
       "inputs": [],
-      "name": "getOwnerBalance",
+      "name": "getContractBalance",
       "outputs": [
         {
           "internalType": "uint256",

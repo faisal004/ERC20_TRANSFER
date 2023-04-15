@@ -10,47 +10,16 @@ const BUYandSell = () => {
     tokenName,
     TokenSymbol,
     accountBalance,
+    buyToken
   } = useContext(TranferContext);
+  const handleSubmit=(e) =>{
+buyToken()
+  }
   return (
     <div>
     {currentAccount?
     (<div className=" bg-gradient-to-r from-black to-blue-900 h-screen items-center justify-center md:flex flex-row space-x-10">
-      <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <h5 className="mb-4 text-4xl font-mono font-medium text-white dark:text-white">
-          IMPORTANT DETAILS{" "}
-        </h5>
-
-        <ul role="list" className="space-y-5 my-7 ">
-          <li className="flex space-x-3">
-            <span className="text-base font-mono leading-tight text-white">
-            Token Symbol - {TokenSymbol}
-            </span>
-          </li>
-          <li className="flex space-x-3">
-            <span className="text-base font-mono leading-tight text-white ">
-            Token Name - {tokenName}
-            </span>
-          </li>
-          <li className="flex space-x-3">
-            <span className="text-base font-mono leading-tight text-white ">
-            Number of token held by Connected Account 
-            <span className="text-base  leading-tight font-semibold text-white ">
-               - {accountBalance}
-            </span>
-            </span>
-          </li>
-          <li className="flex space-x-3">
-            <span className="text-base font-mono leading-tight text-white ">
-            Number of token deployed - {NoOfToken}
-            </span>
-          </li>
-          <li className="flex space-x-3">
-            <span className="text-base font-mono leading-tight text-white ">
-            Token Owner Address -- {shortenAddress(TokenOwner)}
-            </span>
-          </li>
-        </ul>
-      </div>
+      
 
       <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form className="space-y-6" action="#">
@@ -77,9 +46,10 @@ const BUYandSell = () => {
 
           <button
             type="submit"
+            onClick={handleSubmit}
             className="font-mono  w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            SELL
+            BUY
           </button>
         </form>
       </div>

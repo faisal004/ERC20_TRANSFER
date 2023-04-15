@@ -6,7 +6,6 @@ contract ERC20Transfer {
     string public name = "MyToken";
     string public symbol = "MKT";
     uint256 public totalSupply;
-    
 
     address public ownerOfContract;
 
@@ -40,29 +39,46 @@ contract ERC20Transfer {
         uint256 timestamp;
     }
 
+    struct BUYSELLSTRUCT {
+        address sender;
+        address receiver;
+        uint256 amount;
+        uint256 timestamp;
+    }
+
+    BUYSELLSTRUCT[] sales;
+
     TransferStruct[] transactions;
     event TokensPurchased(address buyer, uint256 amount, uint256 timestamp);
     event TokensSold(address seller, uint256 amount, uint256 timestamp);
 
-function buyTokens(uint256 amount) public payable {
-        require(msg.sender != ownerOfContract, "Owner cannot buy their own tokens");
+    function buyTokens(uint256 amount) public payable {
+        require(
+            msg.sender != ownerOfContract,
+            "Owner cannot buy their own tokens"
+        );
 
-    require(msg.value >= (amount/1000 ), "Incorrect amount of ether sent");
+        require(msg.value >= 0.001 ether, "Insufficient ether sent");
 
-   uint256 ethAmount = (amount / 1000) * 1 ether;
-    balanceOf[ownerOfContract] -= amount;
-    balanceOf[msg.sender] += amount;
+        uint256 tokenPrice = 0.001 ether; // 1 MKT costs 0.001 ether
 
-    transactions.push(
-        TransferStruct(ownerOfContract, msg.sender, amount, block.timestamp)
-    );
+        uint256 maxAmount = msg.value / tokenPrice; // Maximum amount of MKT the user can buy
 
-    emit Transfer(ownerOfContract, msg.sender, amount, block.timestamp);
-    emit TokensPurchased(msg.sender, amount, block.timestamp);
+        require(
+            amount <= maxAmount,
+            "Insufficient ether sent for this amount of MKT"
+        );
 
-    payable(ownerOfContract).transfer(ethAmount);
-}
+        balanceOf[ownerOfContract] -= amount;
+        balanceOf[msg.sender] += amount;
 
+        sales.push(
+            BUYSELLSTRUCT(ownerOfContract, msg.sender, amount, block.timestamp)
+        );
+
+        emit Transfer(ownerOfContract, msg.sender, amount, block.timestamp);
+        emit TokensPurchased(msg.sender, amount, block.timestamp);
+    }
 
     function sellTokens(uint256 amount) public {
         require(balanceOf[msg.sender] >= amount, "Insufficient MKT balance");
@@ -70,13 +86,17 @@ function buyTokens(uint256 amount) public payable {
         balanceOf[msg.sender] -= amount;
         balanceOf[ownerOfContract] += amount;
 
-        uint256 ethAmount = (amount / 1000) * 1 ether;
-        payable(msg.sender).transfer(ethAmount);
-        transactions.push(
-            TransferStruct(msg.sender, ownerOfContract, amount, block.timestamp)
+        uint256 ethAmount = (amount * 1 ether) / 1000;
+
+        sales.push(
+            BUYSELLSTRUCT(ownerOfContract, msg.sender, amount, block.timestamp)
         );
         emit Transfer(msg.sender, ownerOfContract, amount, block.timestamp);
         emit TokensSold(msg.sender, amount, block.timestamp);
+
+        address payable recipient = payable(msg.sender);
+
+        recipient.transfer(ethAmount);
     }
 
     function addToBlockchain(address receiver, uint256 amount) public {
@@ -95,7 +115,21 @@ function buyTokens(uint256 amount) public payable {
         return transactions;
     }
 
-    function getOwnerBalance() public view onlyOwner returns (uint256) {
-        return payable(ownerOfContract).balance;
+    function getAllBUYSELLDeatils()
+        public
+        view
+        returns (BUYSELLSTRUCT[] memory)
+    {
+        return sales;
+    }
+
+    function getContractBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+//owner of the contract can only withdraw Half of the eth stored in the contract
+    function withdraw() public onlyOwner {
+        uint256 balance = getContractBalance();
+        require(balance > 0, "Contract balance is zero");
+        payable(ownerOfContract).transfer((balance / 2));
     }
 }

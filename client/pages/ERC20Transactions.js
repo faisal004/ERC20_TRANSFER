@@ -47,7 +47,7 @@ const ERC20TransactionDetails = () => {
   const { walletConnected, currentAccount, transactions} =
     useContext(TranferContext);
   return (
-    <div className="flex w-full h-screen justify-center items-center 2xl:px-20 bg-gradient-to-r from-black to-blue-900">
+    <div className="flex w-full  justify-center items-center 2xl:px-20 bg-gradient-to-r from-black to-blue-900">
       <div className="flex flex-col md:p-12 py-12 px-4">
         {currentAccount ? (
           <h3 className="text-white text-3xl text-center my-2 font-mono">
