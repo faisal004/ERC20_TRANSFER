@@ -60,11 +60,12 @@ const Middle = () => {
             </ul>
           </div>
           <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <h5 className="mb-4 text-xl font-mono font-medium text-white dark:text-white">
-              loremipsumsfdbwsd ihffhid fhedif adifadf hoiehr fhaefoihaewrywer
-              ywarktabrlf eruopty arkehgbaejrg hweluoirgfyaourfhgkajgbuie
-              arhgkeajbw3r oleur ghaeur huar hgafngeuaoihytgafnvolhglvhale
-              urgha.kerghlaghhgq{" "}
+            <h5 className="mb-4 text-lg font-mono font-medium text-white dark:text-white">
+              This is DAPP.Here you can transfer Ethers and ERC20 custom made MKT tokens.{" "}
+              <br/>
+              Here you can also BUY and SELL MKT tokens at an exchange rate of 1 MKT= 0.001 Ether.
+              <br/>
+              Owner of the contract cannot BUY tokens.
             </h5>
           </div>
         </div>

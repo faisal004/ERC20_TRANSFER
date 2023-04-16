@@ -15,7 +15,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
   />
 );
 const EthTransfer= () => {
-  const { connectWallet,formData,setFormData,handleChange,sendEth,tranferERC20Token,NoOfToken} = useContext(TranferContext);
+  const { connectWallet,formData,setFormData,handleChange,sendEth,tranferERC20Token,NoOfToken,isLoading} = useContext(TranferContext);
   const handleSubmit =(e)=>{
     const{addressTo,amount}=formData;
     e.preventDefault();
@@ -40,13 +40,20 @@ const EthTransfer= () => {
           handleChange={handleChange}
         />
         <span  className="h-[1px] w-full bg-gray-400 my-4"></span>
-        <button
+        {isLoading?(<button
+          type="button"
+          
+          className="inline-flex font-mono justify-center w-1/4 bg-green-400 border-0 py-1 px-3 focus:outline-none hover:bg-yellow-200 rounded-lg text-base font-bold mt-4 md:mt-0"
+        >
+          Loading...
+        </button>):(<button
           type="button"
           onClick={handleSubmit}
           className="inline-flex font-mono justify-center w-1/4 bg-green-400 border-0 py-1 px-3 focus:outline-none hover:bg-yellow-200 rounded-lg text-base font-bold mt-4 md:mt-0"
         >
           SEND
-        </button>
+        </button>)}
+        
       </div>
       <ERC20TransactionDetails/>
     </div>

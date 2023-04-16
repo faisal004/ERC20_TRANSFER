@@ -17,6 +17,7 @@ const BUYandSell = () => {
     formDataForBUY,
     sellToken,
     contractBalance,
+    isLoading
   } = useContext(TranferContext);
   const handleSubmit = (e) => {
     const { amount } = formDataForBUY;
@@ -93,14 +94,20 @@ const BUYandSell = () => {
                   required
                 />
               </div>
-
-              <button
+{isLoading?(<button
+                type="submit"
+                
+                className="font-mono  w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Loading...
+              </button>):(<button
                 type="submit"
                 onClick={handleSubmit}
                 className="font-mono  w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 BUY
-              </button>
+              </button>)}
+              
             </form>
           </div>
           <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -127,15 +134,22 @@ const BUYandSell = () => {
                 />
                 <span className="text-green-300  text-sm font-mono">You can sell max {maxmktcanbeSold}</span>
               </div>
-
-              <button
+{isLoading?(<button
               
-                type="submit"
-                onClick={handleSubmitForsell}
-                className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 font-mono "
-              >
-                SELL
-              </button>
+              type="submit"
+              
+              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 font-mono "
+            >
+              Loading...
+            </button>):(<button
+              
+              type="submit"
+              onClick={handleSubmitForsell}
+              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 font-mono "
+            >
+              SELL
+            </button>)}
+              
             </form>
           </div>
         </div>

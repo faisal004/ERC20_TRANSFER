@@ -73,6 +73,7 @@ export const TransferProvider = ({ children }) => {
 
       setIsLoading(true);
       //console.log(`Loading - ${transactionHash.hash}`);
+      await transactionHash.wait();
       setIsLoading(false);
       //console.log(`Success - ${transactionHash.hash}`);
     } catch (error) {
@@ -149,6 +150,7 @@ export const TransferProvider = ({ children }) => {
       );
 
       setIsLoading(true);
+      await transactionHash.wait();
       //console.log(`Loading - ${transactionHash.hash}`);
       setIsLoading(false);
      // console.log(`Success - ${transactionHash.hash}`);
@@ -217,7 +219,9 @@ export const TransferProvider = ({ children }) => {
       const transactionHash = await ERC20TransferContract.buyTokens(amount, {
         value: ethers.utils.parseEther("0.001").mul(amount), // ether amount to send with the transaction
       });
+      setIsLoading(true);
       const receipt = await transactionHash.wait();
+      setIsLoading(false);
       console.log("Transaction confirmed:", receipt.transactionHash);
     } catch (error) {
       console.error(error);
@@ -235,8 +239,11 @@ export const TransferProvider = ({ children }) => {
       );
 
       const transactionHash = await ERC20TransferContract.sellTokens(amount);
+      setIsLoading(true);
       const receipt = await transactionHash.wait();
-      //console.log("Transaction confirmed:", receipt.transactionHash);
+      setIsLoading(false);
+      console.log("Transaction confirmed:", receipt.transactionHash);
+      
     } catch (error) {
       console.error(error);
     }
