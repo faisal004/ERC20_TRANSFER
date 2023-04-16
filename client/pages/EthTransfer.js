@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { TranferContext } from "@/context/TransferContext";
 import TransactionDetails from "./TransactionDetails";
 
@@ -12,18 +12,27 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
     className="my-2 w-full rounded-xl p-2 outline-none bg-blue-900 text-white border-none text-sm"
   />
 );
-const EthTransfer= () => {
-  const { connectWallet,formData,setFormData,handleChange,sendEth } = useContext(TranferContext);
-  const handleSubmit =(e)=>{
-    const{addressTo,amount}=formData;
+const EthTransfer = () => {
+  const {
+    connectWallet,
+    formData,
+    setFormData,
+    handleChange,
+    sendEth,
+    isLoading,
+  } = useContext(TranferContext);
+  const handleSubmit = (e) => {
+    const { addressTo, amount } = formData;
     e.preventDefault();
-    if(!addressTo || !amount) return;
+    if (!addressTo || !amount) return;
     sendEth();
-  }
-  
+  };
+
   return (
     <div className="w-full h-full  pt-7 flex flex-col space-y-36 items-center justify-center bg-gradient-to-r from-black to-blue-900">
-    <div className="flex font-mono text-white text-4xl">Send Ethers to your friends</div>
+      <div className="flex font-mono text-white text-4xl">
+        Send Ethers to your friends
+      </div>
       <div className="flex flex-col w-1/2 ">
         <Input
           placeholder="Address To"
@@ -33,11 +42,12 @@ const EthTransfer= () => {
         />
         <Input
           placeholder="Amount (ETH)"
-          name="amount" 
+          name="amount"
           type="number"
           handleChange={handleChange}
         />
-        <span  className="h-[1px] w-full bg-gray-400 my-4"></span>
+        <span className="h-[1px] w-full bg-gray-400 my-4"></span>
+
         <button
           type="button"
           onClick={handleSubmit}
@@ -46,7 +56,7 @@ const EthTransfer= () => {
           SEND
         </button>
       </div>
-      <TransactionDetails/>
+      <TransactionDetails />
     </div>
   );
 };

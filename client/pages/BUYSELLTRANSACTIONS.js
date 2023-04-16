@@ -20,7 +20,7 @@ const TransactionsCard = ({ addressTo, addressFrom, timestamp, amount }) => {
             rel="noreferrer"
           >
             <p className="text-white font-mono text-base">
-              From: {shortenAddress(addressFrom)}
+              Seller: {shortenAddress(addressFrom)}
             </p>
           </a>
           <a
@@ -29,7 +29,7 @@ const TransactionsCard = ({ addressTo, addressFrom, timestamp, amount }) => {
             rel="noreferrer"
           >
             <p className="text-white font-mono text-base">
-              To: {shortenAddress(addressTo)}
+              Buyer: {shortenAddress(addressTo)}
             </p>
           </a>
           <p className="text-white font-mono text-base">Amount: {amount} MKT</p>
@@ -43,15 +43,15 @@ const TransactionsCard = ({ addressTo, addressFrom, timestamp, amount }) => {
   );
 };
 
-const ERC20TransactionDetails = () => {
-  const { walletConnected, currentAccount, transactionsForERC20} =
+const BUYSELLTRANSACTIONS = () => {
+  const { walletConnected, currentAccount, transactionsForBUYSELL } =
     useContext(TranferContext);
   return (
     <div className="flex w-full  justify-center items-center 2xl:px-20 bg-gradient-to-r from-black to-blue-900">
       <div className="flex flex-col md:p-12 py-12 px-4">
         {currentAccount ? (
           <h3 className="text-white text-3xl text-center my-2 font-mono">
-            Latest Transactions of ERC20 (MKT)
+            Latest Transactions
           </h3>
         ) : (
           <h3 className="text-white text-3xl text-center my-2 font-serif">
@@ -59,7 +59,7 @@ const ERC20TransactionDetails = () => {
           </h3>
         )}
         <div className="flex flex-wrap justify-center items-center mt-10">
-          {[...transactionsForERC20].reverse().map((transaction, i) => (
+          {[...transactionsForBUYSELL].reverse().map((transaction, i) => (
             <TransactionsCard key={i} {...transaction} />
           ))}
         </div>
@@ -68,4 +68,4 @@ const ERC20TransactionDetails = () => {
   );
 };
 
-export default ERC20TransactionDetails;
+export default BUYSELLTRANSACTIONS;

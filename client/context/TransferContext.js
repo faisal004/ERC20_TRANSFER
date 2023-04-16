@@ -17,21 +17,29 @@ export const TransferProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [currentBalance, setCurrentBalance] = useState("");
   const [transactions, setTransactions] = useState([]);
-  const [holderArray, setHolderArray] = useState([]);
+  
   const [accountBalance, setAccountBalance] = useState("");
-  const [userID, setUserID] = useState("");
   const [NoOfToken, setNoOfToken] = useState("");
   const [tokenName, setTokenName] = useState("");
   const [TokenSymbol, setTokenSymbol] = useState("");
   const [TokenOwner, setTokenOwner] = useState("");
   const [TokenOwnerBalance, setTokenOwnerBalance] = useState("");
-
+  const [contractBalance, setContractBalance] = useState("");
+  const [formDataForBUY, setFormDataForBUY] = useState({ amount: "" });
+  const [transactionsForERC20, setTransactionsForERC20] = useState([]);
+  const [transactionsForBUYSELL, setTransactionsForBUYSELL] = useState([]);
   const [formData, setFormData] = useState({ addressTo: "", amount: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const web3ModalRef = useRef();
   const handleChange = (e, name) => {
     setFormData((prevState) => ({ ...prevState, [name]: e.target.value }));
+  };
+  const handleChangeOFbuy = (e) => {
+    setFormDataForBUY((prevState) => ({
+      ...prevState,
+      amount: e.target.value,
+    }));
   };
 
   const connectWallet = async () => {
@@ -41,6 +49,8 @@ export const TransferProvider = ({ children }) => {
       getAllTransactions();
       getAllERC20Transactions();
       tokenDetails();
+      getAllBUYSELLTransactions();
+      getContractBalance();
     } catch (err) {
       console.error(err);
     }
@@ -62,9 +72,9 @@ export const TransferProvider = ({ children }) => {
       );
 
       setIsLoading(true);
-      console.log(`Loading - ${transactionHash.hash}`);
+      //console.log(`Loading - ${transactionHash.hash}`);
       setIsLoading(false);
-      console.log(`Success - ${transactionHash.hash}`);
+      //console.log(`Success - ${transactionHash.hash}`);
     } catch (error) {
       console.error(error);
     }
@@ -98,7 +108,11 @@ export const TransferProvider = ({ children }) => {
   const getAllERC20Transactions = async () => {
     try {
       const signer = await getProviderOrSigner(true);
-      const transactioContract = new Contract(ERC20TransferAddress, ERC20_ABI, signer);
+      const transactioContract = new Contract(
+        ERC20TransferAddress,
+        ERC20_ABI,
+        signer
+      );
 
       const availableTransactions =
         await transactioContract.getAllTransaction();
@@ -110,12 +124,11 @@ export const TransferProvider = ({ children }) => {
             transaction.timestamp.toNumber() * 1000
           ).toLocaleString(),
 
-          amount: parseInt(transaction.amount._hex)
-          ,
+          amount: parseInt(transaction.amount._hex),
         })
       );
-      console.log(structuredTransactions);
-      setTransactions(structuredTransactions);
+      //console.log(structuredTransactions);
+      setTransactionsForERC20(structuredTransactions);
     } catch (error) {
       console.error(error);
     }
@@ -136,9 +149,28 @@ export const TransferProvider = ({ children }) => {
       );
 
       setIsLoading(true);
-      console.log(`Loading - ${transactionHash.hash}`);
+      //console.log(`Loading - ${transactionHash.hash}`);
       setIsLoading(false);
-      console.log(`Success - ${transactionHash.hash}`);
+     // console.log(`Success - ${transactionHash.hash}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getContractBalance = async () => {
+    try {
+      const signer = await getProviderOrSigner(true);
+      const transactioContract = new Contract(
+        ERC20TransferAddress,
+        ERC20_ABI,
+        signer
+      );
+      const balanceWei = await transactioContract.getContractBalance();
+      const balanceEth = ethers.utils.formatEther(balanceWei);
+
+      setContractBalance(balanceEth);
+
+      //console.log(balanceEth);
     } catch (error) {
       console.error(error);
     }
@@ -173,9 +205,71 @@ export const TransferProvider = ({ children }) => {
   };
 
   const buyToken = async () => {
-    alert("you clicked me")
+    try {
+      const { amount } = formDataForBUY;
+      const signer = await getProviderOrSigner(true);
+      const ERC20TransferContract = new Contract(
+        ERC20TransferAddress,
+        ERC20_ABI,
+        signer
+      );
 
-  }
+      const transactionHash = await ERC20TransferContract.buyTokens(amount, {
+        value: ethers.utils.parseEther("0.001").mul(amount), // ether amount to send with the transaction
+      });
+      const receipt = await transactionHash.wait();
+      console.log("Transaction confirmed:", receipt.transactionHash);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const sellToken = async () => {
+    try {
+      const { amount } = formDataForBUY;
+      const signer = await getProviderOrSigner(true);
+      const ERC20TransferContract = new Contract(
+        ERC20TransferAddress,
+        ERC20_ABI,
+        signer
+      );
+
+      const transactionHash = await ERC20TransferContract.sellTokens(amount);
+      const receipt = await transactionHash.wait();
+      //console.log("Transaction confirmed:", receipt.transactionHash);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getAllBUYSELLTransactions = async () => {
+    try {
+      const signer = await getProviderOrSigner(true);
+      const transactioContract = new Contract(
+        ERC20TransferAddress,
+        ERC20_ABI,
+        signer
+      );
+
+      const availableTransactions =
+        await transactioContract.getAllBUYSELLDeatils();
+      const structuredTransactions = availableTransactions.map(
+        (transaction) => ({
+          addressTo: transaction.receiver,
+          addressFrom: transaction.sender,
+          timestamp: new Date(
+            transaction.timestamp.toNumber() * 1000
+          ).toLocaleString(),
+
+          amount: parseInt(transaction.amount._hex),
+        })
+      );
+      //console.log(structuredTransactions);
+      setTransactionsForBUYSELL(structuredTransactions);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const getProviderOrSigner = async (needSigner = false) => {
     const provider = await web3ModalRef.current.connect();
@@ -223,9 +317,16 @@ export const TransferProvider = ({ children }) => {
         currentBalance,
         transactions,
         buyToken,
+        contractBalance,
+        handleChangeOFbuy,
+        formDataForBUY,
+        setFormData,
 
         tokenDetails,
         tranferERC20Token,
+        transactionsForERC20,
+        transactionsForBUYSELL,
+        isLoading,
 
         NoOfToken,
         tokenName,
@@ -234,6 +335,7 @@ export const TransferProvider = ({ children }) => {
         TokenOwner,
         TokenOwnerBalance,
         accountBalance,
+        sellToken,
       }}
     >
       {children}

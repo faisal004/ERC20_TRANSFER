@@ -89,7 +89,7 @@ contract ERC20Transfer {
         uint256 ethAmount = (amount * 1 ether) / 1000;
 
         sales.push(
-            BUYSELLSTRUCT(ownerOfContract, msg.sender, amount, block.timestamp)
+            BUYSELLSTRUCT(msg.sender,ownerOfContract, amount, block.timestamp)
         );
         emit Transfer(msg.sender, ownerOfContract, amount, block.timestamp);
         emit TokensSold(msg.sender, amount, block.timestamp);

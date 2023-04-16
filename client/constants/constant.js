@@ -1,5 +1,5 @@
 export const EthTransferAddress="0x593dE4785Bd25AF4362224fFc1b8Af51272cc9C0";
-export const ERC20TransferAddress="0xceccd898e154e99bb4aee06cacd5823adff2fed2";
+export const ERC20TransferAddress="0xdBdb00c398fd44e38bA9afda45935B5814aCB3D7";
 export const ABI= [
     {
       "anonymous": false,
@@ -101,51 +101,7 @@ export const ABI= [
   ];
 
 
-  export const ERC20_ABI=[
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "receiver",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "addToBlockchain",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "buyTokens",
-      "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "sellTokens",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
+  export const ERC20_ABI= [
     {
       "inputs": [
         {
@@ -239,8 +195,19 @@ export const ABI= [
       "type": "event"
     },
     {
-      "inputs": [],
-      "name": "withdraw",
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "addToBlockchain",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -262,6 +229,19 @@ export const ABI= [
         }
       ],
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "buyTokens",
+      "outputs": [],
+      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -374,6 +354,19 @@ export const ABI= [
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "sellTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "symbol",
       "outputs": [
@@ -397,6 +390,13 @@ export const ABI= [
         }
       ],
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     }
   ]
