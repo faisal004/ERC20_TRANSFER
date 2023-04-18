@@ -41,7 +41,7 @@ const BUYandSell = () => {
       {currentAccount ? (
         <div className=" bg-gradient-to-r from-black to-blue-900 h-screen items-center justify-center md:flex flex-row space-x-10">
           <div className="space-y-4">
-            <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <div className="w-full max-w-sm p-4  border rounded-lg shadow sm:p-6 md:p-8 bg-gray-800 border-gray-700">
               <h5 className="text-lg font-mono font-medium text-gray-900 dark:text-white">
                 Converter
               </h5>
@@ -82,7 +82,7 @@ const BUYandSell = () => {
               </h5>
             </div>
           </div>
-          <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <div className="w-full max-w-sm p-4  border  rounded-lg shadow sm:p-6 md:p-8 bg-gray-800 border-gray-700">
             <form className="space-y-6" action="#">
               <h5 className="text-xl font-mono font-medium text-gray-900 dark:text-white">
                 BUY MKT{" "}
@@ -122,7 +122,7 @@ const BUYandSell = () => {
               )}
             </form>
           </div>
-          <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <div className="w-full max-w-sm p-4  border  rounded-lg shadow sm:p-6 md:p-8 bg-gray-800 border-gray-700">
             <form className="space-y-6" action="#">
               <h5 className="text-xl font-medium text-gray-900 dark:text-white font-mono ">
                 SELL MKT{" "}
