@@ -59,7 +59,7 @@ const Middle = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <div className="w-full max-w-sm p-4 rounded-lg shadow sm:p-8 bg-gray-800 border-gray-700">
             <h5 className="mb-4 text-lg font-mono font-medium text-white dark:text-white">
               This is DAPP.Here you can transfer Ethers and ERC20 custom made MKT tokens.{" "}
               <br/>
