@@ -47,7 +47,7 @@ const BUYandSell = () => {
               </h5>
               <div>
                 <label
-                  className="block mb-2  py-1  text-sm font-mono  font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  py-1  text-sm font-mono  font-medium text-white"
                   htmlFor="amount"
                 >
                   Enter amount:
@@ -62,7 +62,7 @@ const BUYandSell = () => {
                 />
                 <br />
                 <label
-                  className="block mb-2 text-sm font-mono py-1 font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-mono py-1 font-medium text-white"
                   htmlFor="result"
                 >
                   Ether to send/receive:
