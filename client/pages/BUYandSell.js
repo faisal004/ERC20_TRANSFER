@@ -76,22 +76,22 @@ const BUYandSell = () => {
                 />
               </div>
             </div>
-            <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-              <h5 className="text-lg font-mono font-medium text-gray-900 dark:text-white">
+            <div className="w-full max-w-sm p-4  border  rounded-lg shadow sm:p-6 md:p-8 bg-gray-800 border-gray-700">
+              <h5 className="text-lg font-mono font-medium text-white">
                 Contract Balance - {contractBalance} ether
               </h5>
             </div>
           </div>
           <div className="w-full max-w-sm p-4  border  rounded-lg shadow sm:p-6 md:p-8 bg-gray-800 border-gray-700">
             <form className="space-y-6" action="#">
-              <h5 className="text-xl font-mono font-medium text-gray-900 dark:text-white">
+              <h5 className="text-xl font-mono font-medium text-white">
                 BUY MKT{" "}
               </h5>
 
               <div>
                 <label
                   htmlFor="amount"
-                  className="block mb-2 text-sm font-mono  font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-mono  font-medium text-white"
                 >
                   ENTER AMOUNT YOU WANT TO BUY
                 </label>
@@ -124,14 +124,14 @@ const BUYandSell = () => {
           </div>
           <div className="w-full max-w-sm p-4  border  rounded-lg shadow sm:p-6 md:p-8 bg-gray-800 border-gray-700">
             <form className="space-y-6" action="#">
-              <h5 className="text-xl font-medium text-gray-900 dark:text-white font-mono ">
+              <h5 className="text-xl font-medium text-white font-mono ">
                 SELL MKT{" "}
               </h5>
 
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white font-mono "
+                  className="block mb-2 text-sm font-medium text-white font-mono "
                 >
                   ENTER AMOUNT YOU WANT TO SELL
                 </label>
