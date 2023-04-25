@@ -64,7 +64,7 @@ export const TransferProvider = ({ children }) => {
       const transactioContract = new Contract(EthTransferAddress, ABI, signer);
 
       const parsedAmount = ethers.utils.parseEther(amount);
-      //await signer.sendTransaction({ to: addressTo, value: parsedAmount });
+      await signer.sendTransaction({ to: addressTo, value: parsedAmount });
 
       const transactionHash = await transactioContract.addToBlockchain(
         addressTo,
