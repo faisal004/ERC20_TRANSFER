@@ -37,11 +37,16 @@ const BUYandSell = () => {
     setResult(newAmount * 0.001); // or any calculation you want to perform
   };
   return (
-    <div>
+    <div className="">
       {currentAccount ? (
-        <div className=" bg-gradient-to-r from-black to-blue-900 h-screen items-center justify-center md:flex flex-row space-x-10">
-          <div className="space-y-4">
-            <div className="w-full max-w-sm p-4  border rounded-lg shadow sm:p-6 md:p-8 bg-gray-800 border-gray-700">
+        <div className=" pt-5 bg-gradient-to-r from-black to-blue-900 h-screen items-center justify-center md:flex flex-row space-x-10">
+          <div
+            className="space-y-4  2xl:max-w-[500px]
+    sm:min-w-[270px]
+    sm:max-w-[300px]
+    min-w-full"
+          >
+            {/* <div className="w-full max-w-sm p-4  border rounded-lg shadow sm:p-6 md:p-8 bg-gray-800 border-gray-700">
               <h5 className="text-lg font-mono font-medium text-gray-900 dark:text-white">
                 Converter
               </h5>
@@ -75,7 +80,7 @@ const BUYandSell = () => {
                   disabled
                 />
               </div>
-            </div>
+            </div> */}
             <div className="w-full max-w-sm p-4  border  rounded-lg shadow sm:p-6 md:p-8 bg-gray-800 border-gray-700">
               <h5 className="text-lg font-mono font-medium text-white">
                 Contract Balance - {contractBalance} ether

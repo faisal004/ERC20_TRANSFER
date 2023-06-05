@@ -14,9 +14,9 @@ const Middle = () => {
   } = useContext(TranferContext);
 
   return (
-    <div className=" w-full items-center justify-center  px-5 py-24 mx-auto text-white bg-gradient-to-r from-black to-blue-900 font-mono h-screen">
+    <div className=" w-full items-center justify-center   px-5 py-24 mx-auto text-white bg-gradient-to-r from-black to-blue-900 font-mono h-screen">
       {currentAccount ? (
-        <div className="flex flex-row items-center justify-center space-x-40">
+        <div className="flex sm:flex-row flex-col items-center justify-center space-x-40 space-y-4">
           <div className="w-full max-w-sm p-4 rounded-lg shadow sm:p-8 bg-gray-800 border-gray-700">
             <h5 className="mb-4 text-4xl font-mono font-medium text-white dark:text-white">
               IMPORTANT DETAILS{" "}
@@ -59,7 +59,7 @@ const Middle = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full max-w-sm p-4 rounded-lg shadow sm:p-8 bg-gray-800 border-gray-700">
+          <div className="w-full  -translate-x-20 max-w-sm p-4 rounded-lg shadow sm:p-8 bg-gray-800 border-gray-700">
             <h5 className="mb-4 text-lg font-mono font-medium text-white dark:text-white">
               This is DAPP.Here you can transfer Ethers and ERC20 custom made MKT tokens.{" "}
               <br/>
