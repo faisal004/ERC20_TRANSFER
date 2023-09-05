@@ -16,13 +16,13 @@ const Middle = () => {
   return (
     <div className=" w-full items-center justify-center   px-5 py-24 mx-auto text-white bg-gradient-to-r from-black to-blue-900 font-mono h-screen">
       {currentAccount ? (
-        <div className="flex sm:flex-row flex-col items-center justify-center space-x-40 space-y-4">
+        <div className="flex sm:flex-row flex-col items-center justify-center space-x-40 space-y-4 ">
           <div className="w-full max-w-sm p-4 rounded-lg shadow sm:p-8 bg-gray-800 border-gray-700">
             <h5 className="mb-4 text-4xl font-mono font-medium text-white dark:text-white">
               IMPORTANT DETAILS{" "}
             </h5>
 
-            <ul role="list" className="space-y-5 my-7 ">
+            <ul role="list" className="space-y-5 my-7 overflow-auto h-60 ">
               <li className="flex space-x-3">
                 <span className="text-lg font-mono leading-tight text-white">
                   Token Symbol - {TokenSymbol}

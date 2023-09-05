@@ -11,7 +11,7 @@ const Middle = () => {
           Features we offer
         </h1>
         <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
-          <div className="p-4 md:w-1/3 flex">
+          <div className="p-4 md:w-1/3 w-full flex">
             <div className="flex-grow pl-6">
               <a
                 href="#"

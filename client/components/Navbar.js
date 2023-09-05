@@ -23,13 +23,13 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="bg-black w-full flex  justify-between items-center p-4">
-        <div className=" text-white md-flex-[0.5] flex-initial justify-center items-center w-32">
+      <nav className="bg-black w-full flex  justify-between items-center p-4 mx-auto">
+        <div className=" text-white md-flex-[0.5] flex-initial justify-center items-center w-full ">
           <Link href={"/"}>
             <span className="text-white ml-3 text-4xl font-mono">TranzaKt</span>
           </Link>
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden lg:block w-full">
           <ul className="text-white md:flex font-mono list-none flex-row justify-between items-center flex-initial space-x-3">
             <Link href={"/EthTransfer"}>TransferEth</Link>
             <Link href={"/TransferERC20"}>TransferERC20</Link>
@@ -37,7 +37,7 @@ const Navbar = () => {
             <Link href={"/TokenDetails"}>Details</Link>
           </ul>
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden lg:block w-full text-right items-center">
           {" "}
           {!walletConnected ? (
             <button
